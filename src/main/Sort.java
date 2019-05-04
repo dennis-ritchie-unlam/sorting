@@ -24,4 +24,27 @@ public class Sort {
 			vec.set(posMin, aux);
 		}
 	}
+	
+	
+	/**
+	 * ASC
+	 * 
+	 * @param vec
+	 * @return
+	 */
+	public void bubble(ArrayList<Integer> vec) {
+		boolean swapped;
+		int aux;
+		do {
+			swapped = false;
+			for(int i = 0;i<vec.size()-1;i++) {
+				if(vec.get(i) > vec.get(i+1)) {
+					aux = vec.get(i);
+					vec.set(i, vec.get(i+1));
+					vec.set(i+1, aux);
+					swapped = true;
+				}
+			}
+		} while(swapped);
+	}
 };
