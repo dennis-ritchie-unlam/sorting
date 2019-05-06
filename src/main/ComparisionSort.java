@@ -1,8 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class ComparisionSort {
 
@@ -110,8 +108,32 @@ public class ComparisionSort {
 		}
 	}
 
-	public void quick() {
+	public void quick(ArrayList<Integer> vec) {
+		doQuick(vec, 0, vec.size() - 1);
+	}
 
+	private void doQuick(ArrayList<Integer> vec, int left, int rigth) {
+		if (left < rigth) {
+			int pI = doQuickPartition(vec, left, rigth);
+
+			doQuick(vec, left, pI - 1);
+			doQuick(vec, pI + 1, rigth);
+		}
+	}
+
+	private int doQuickPartition(ArrayList<Integer> vec, int left, int rigth) {
+        int pivot = vec.get(left);
+		int m = left;
+		for (int k = left + 1; k <= rigth; k++) {
+			if (vec.get(k) < pivot) {
+				m++;
+				permute(vec, k, m);
+			}
+		}
+
+		permute(vec, left, m);
+
+		return m;
 	}
 
 	public void random() {
